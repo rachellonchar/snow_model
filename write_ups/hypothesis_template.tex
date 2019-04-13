@@ -1,0 +1,92 @@
+\documentclass[12 pt]{article}
+\usepackage[english]{babel}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+%\usepackage{fullpage}
+%\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage[letterpaper, margin=1 in]{geometry}
+\usepackage{times}
+\usepackage{setspace}
+\singlespacing 
+\usepackage{graphicx}%
+\usepackage{xfrac}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{afterpage}
+\usepackage{varwidth}
+\DeclareGraphicsExtensions{.png}
+\graphicspath{{./code/g/}, {/home/rachellonchar/Dropbox/python_work/00py_projects/template_category/template_project/code/g/}, {/home/rachellonchar/Dropbox/python_work/00py_projects/template_category/template_project/code/}}
+
+%DOCUMENT HEADER:
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Hypothesis Evaluation}\usepackage[section]{placeins}
+\rhead{Rachel Lonchar}
+\cfoot{Page \thepage} %page numbering 
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%
+
+% Declare bold typewriter font with Computer Modern
+\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
+%\begin{comment}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    rulecolor=\color{codegray}, 
+    basicstyle=\footnotesize\upshape\ttfamily,  
+    keywordstyle=\color{blue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    commentstyle=\color{codegreen},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,  
+    frame=single,	                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    stringstyle=\color{codepurple},
+    showtabs=false,                  
+    tabsize=2}
+\lstset{style=mystyle}
+%\end{comment}
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+%
+%COMMENT OUT
+\lstset{inputpath=/home/rachellonchar/Dropbox/python_work/00py_projects/template_category/template_project/code/}
+%
+%COMMENT IN 
+%\lstset{inputpath=./code}
+%----------------------------------------------------------------------------
+\begin{document}
+%HYPOTHESIS
+\section{Hypothesis}
+\subsection*{What do you want to test?}
+
+%APPROACH
+\section{Approach}
+\subsection*{What plots would you construct? With which variables? Expectations?}
+
+%EVALUATION
+\section{Evaluate}
+\subsection*{Does your plot support hypothesis? Compare what you'd expect with what you see.}
+
+
+
+
+
+
+\end{document}
