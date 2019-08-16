@@ -1,0 +1,616 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGUJournalTemplate.tex: this template file is for articles formatted with LaTeX
+%
+% This file includes commands and instructions
+% given in the order necessary to produce a final output that will
+% satisfy AGU requirements, including customized APA reference formatting.
+%
+% You may copy this file and give it your
+% article name, and enter your text.
+%
+%
+% Step 1: Set the \documentclass
+%
+% There are two options for article format:
+%
+% PLEASE USE THE DRAFT OPTION TO SUBMIT YOUR PAPERS.
+% The draft option produces double spaced output.
+%
+
+%% To submit your paper:
+\documentclass[draft]{agujournal2019}
+\usepackage{url} %this package should fix any errors with URLs in refs.
+\usepackage{lineno}
+\usepackage{graphicx}%
+\usepackage{xfrac}
+\usepackage{url}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{afterpage}
+\usepackage{varwidth}
+\usepackage{amsmath}
+\usepackage{enumitem}
+%\usepackage{cite}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{verbatim}
+
+\DeclareGraphicsExtensions{.png}
+\graphicspath{{/home/rachellonchar/Desktop/peat_project/g/}, {/home/rachellonchar/Dropbox/python_work/peat_project/g/}, {/home/rachellonchar/Desktop/python_work/00py_projects/template_category/template_project/code/}}
+\newcommand{\co}{CO$_2$}  
+\newcommand{\ch}{CH$_4$}  
+\newcommand{\h}{H$_2$} 
+\newcommand{\A}{\mathcal{S}} 
+\newcommand{\I}{\mathcal{I}} 
+\newcommand{\swe}{\mathcal{Q}} 
+\newcommand{\M}{\mathcal{M}} 
+\newcommand{\E}{\mathcal{E}} 
+\newcommand{\dg}{\mathnormal{^{\circ}}} 
+
+\linenumbers
+
+\draftfalse
+
+%% Enter journal name below.
+%% Choose from this list of Journals:
+%
+% JGR: Atmospheres
+% JGR: Biogeosciences
+% JGR: Earth Surface
+% JGR: Oceans
+% JGR: Planets
+% JGR: Solid Earth
+% JGR: Space Physics
+% Global Biogeochemical Cycles
+% Geophysical Research Letters
+% Paleoceanography and Paleoclimatology
+% Radio Science
+% Reviews of Geophysics
+% Tectonics
+% Space Weather
+% Water Resources Research
+% Geochemistry, Geophysics, Geosystems
+% Journal of Advances in Modeling Earth Systems (J%\newcommand*{\footcite}[1]{\footnote{\cite{#1}}}AMES)
+% Earth's Future
+% Earth and Space Science
+% Geohealth
+%
+% ie, \journalname{Water Resources Research}
+
+\journalname{JGR-Biogeosciences}
+
+
+\begin{document}
+\title{Seasonal precipitation explains \ch~sensitivity to soil temperature in northern peatland}% resolved when we account for seasonal hydrological dynamics}
+
+%% ------------------------------------------------------------------------ %%
+%
+%  AUTHORS AND AFFILIATIONS
+
+\authors{Rachel Lonchar \affil{1}, M. Julian Deventer \affil{3} , Tim Griffith \affil{3} , Randall Kolka \affil{2} ,
+Gene-Hua Crystal Ng \affil{4} , D.Tyler Roman \affil{2} , Stephen Sebestyen \affil{2} , Xue Feng \affil{1}}
+\affiliation{1}{Department of Civil, Environmental, and Geo-Engineering, University of Minnesota}
+\affiliation{2}{Northern Research Station, Forest Service, USDA, Grand Rapids,
+Minnesota, USA.}
+\affiliation{3}{Department of Soil, Water, and Climate, University of Minnesota}
+\affiliation{4}{Department of Earth and Environmental Sciences, University of Minnesota}
+
+
+
+
+\correspondingauthor{Rachel Lonchar}{lonch002@umn.edu}
+
+\begin{keypoints}
+\item enter point 1 here
+\item enter point 2 here
+\item enter point 3 here
+\end{keypoints}
+
+%
+
+%%
+%-----------------MATERIALS AND METHODS--------------------------------
+\section{Materials and Methods}
+% METHODS 3, surface water input
+\subsection{Daily surface water inputs }
+
+We are interested in surface water available to peat soil microbes, but snow will not become available until it melts. To account for this in our surface water budget, we look at daily contributions from rainfall and snowmelt, including delayed responses in rain water contributions in the event of significant snowpack or icepack. Since we do not have data on snowfall or snow accumulation at this site, we need to model these winter dynamics. We use an energy-balance approach, similar to that outlined in Equation X in \cite{W5}. Consider some fixed ground area with snowpack $m_S$ (kJ/m$^{2}$). Melting will primarily be driven by solar radiation, so we expect melt to first occur near the surface. Some proportion of snowmelt will travel through the snowpack and enter the soil column as surface water input, but the rest will refreeze before it reaches this destination. Similarly, some proportion of rainfall will refreeze before reaching the soil surface, depending on climate conditions, and the snowpack depth and density. This refrozen liquid water will contribute to an icepack of mass $m_I$. Together, we'll refer to the snowpack-icepack as the frozen-pack, where $m_F = m_S+m_I$. On a daily time scale, we ought to also consider the amount of ``trapped'' water $m_W$, that is rain water and frozen-pack melt that does not immediately contribute to surface water input because it must first travel through snow and ice. In the following, we outline an energy balance capturing changes in the state of some system, where the system here consists of the frozen-pack and trapped water, and state changes can be mass gained or lost, as well as changes in the system's physical properties (e.g. temperature, density, relative ratio of solids to liquids). We define, 
+\begin{equation}
+ \E_P + \E_T = R_n + H + LE +G+P,
+ %\lambda \M + \swe_{s,0} (c_{sp}\Delta T_{sp})
+\label{eq:snow}
+\end{equation}
+where $\E_M$ corresponds to the energy absorbed or lost when water in the system undergoes a phase change (either melting or freezing; liquid-vapor phase changes are captured by $LE$), and $\E_W$ is the energy associated with temperature changes (both in kJ/m$^{2}$).
+On the right-hand side are the energy input fluxes (in kJ/m$^{2}$), where
+$R_n$ is the net incoming solar radiation, $H$ is the sensible heat exchange, $LE$ is latent energy flux associated with latent heats of vaporization and condensation at the surface, $G$ is the ground heat conduction, and $P$ is the heat added by rainfall events. We'll refer to the sum of the right-hand side energy inputs as the net input energy, denoted $E_{net}$.
+
+For some fixed day $t$, we assume snowfall and rainfall contribute to snowpack or trapped water, before the system undergoes any changes in phase or temperature. If net input energy is negative $E_{net}<0$, we assume energy first goes to cooling trapped water to 0$\dg$C, and then freezing it \textit{before} snowpack or icepack temperatures change. If $E_{net}>0$, we assume energy goes towards warming snowpack and icepack to 0$\dg$C before any melting occurs. We arbitrarily allow snowpack warming before icepack warming, and snowpack melting before icepack melting, though such a distinction ultimately makes no difference when we're only concerned with surface water input contributions (e.g. mass of liquid water that leaves the system and becomes available to soil microbes). 
+
+\textit{Energy associated with warming or cooling, $\E_W$.} On some fixed day $t$, we define initial snowpack mass $m_S^*$, and temperature $T_S^*$ as,
+\begin{equation}
+m_S^*(t) = m_S(t-1) + X_S(t), \mbox{ and    ~}
+T_S^*(t) = \frac{T_S(t-1)m_S(t-1) + T_{X_S}(t) X_S(t)}{m_S^*(t)},
+\end{equation}
+where $m_S(t-1)$ and $T_S(t-1)$ are respectively the snowpack mass and temperature at the end of the previous day. $X_S(t)$ and $T_{X_S}(t)$ denote the mass and temperature, respectively, of any snowfall that fell on day $t$. Analogous definitions follow for initial mass and temperature of trapped water ($m_W^*,T_W^*$), where rainfall temperature is always set to 0$\dg$C (rainfall temperature is accounted for in the energy flux $P$). Icepack mass and temperature ($m_I^*,T_I^*$) can similarly be defined, though precipitation events will not alter these from the end of the previous day. 
+
+The energy required to warm (or cool) snowpack temperature to $T_S$ is given by,
+\begin{equation}
+w_S = m_S^* C_S (T_S - T_S^*),
+\end{equation}
+where $C_S$ is the heat capacity for snow ($C_S=2.09\times 10^{-1}$ kJ(kg$\dg$C)$^{-1}$). We can similarly define this for icepack ($C_I=2.093\times 10^{-1}$ kJ(kg$\dg$C)$^{-1}$) and trapped water ($C_W=4.182\times 10^{-1}$ kJ(kg$\dg$C)$^{-1}$), keeping in mind that snowpack and icepack temperature can only warm to 0$\dg$C before undergoing melt, and trapped water can only cool to 0$\dg$C before refreezing occurs. In total, $\E_W = w_S+w_I+w_W$.
+
+\textit{Energy associated with melting or freezing, $\E_P$.} We estimate the energy required to melt a mass $\delta_S$ of snow as,
+\begin{equation}
+e_S = \lambda \delta_S,
+\end{equation}
+where $\lambda=334$ kJ/kg is the latent heat of fusion for water. Similarly the energies needed to melt a mass $\delta_I$ of icepack, or freeze a mass $\delta_W$ of trapped water can be calculated as $e_I=\lambda \delta_I$, and  $e_W=-\lambda \delta_W$, respectively. In total, $\E_P = e_S+e_I+e_W$, and the final masses on some day $t$ 
+
+\textit{Surface water input due to rainfall and snowmelt.} The final icepack mass on day $t$ is given by $m_I(t)=m_I^*(t)-\delta_I+\delta_W$. For snowpack, $m_S(t)=m_S^*(t)-\delta_S$. In the absence of frozen-pack (e.g. $m_S^*(t)+m_I^*(t)=0$), we assume all rainfall $X_R$ contributes to surface water input $I$. However, if frozen-pack is present, we use the gravity-flow theory of water percolation through snow \cite{W19}, namely,
+\begin{equation}
+n (\alpha k)^{1/n} u^{(n-1)/n} \frac{\partial u}{\partial z}
++ \phi (1-S_{wi}) \frac{\partial u}{\partial \iota} = 0,
+\label{eq:meltdif}
+\end{equation}
+where $n=3$ is the power-law exponent, and $\alpha=5.47\times 10^{6}$ (ms)$^{-1}$ is a constant based on the density $\rho$ and viscosity of water $\mu$, as well as gravitational acceleration $g$ ($\alpha=\rho g \mu^{-1}$). $k=k(z)$ is the depth-dependent permeability (m$^2$), $u$ is the volumetric flux (m$^3$/(m$^2$s)), $z$ is the depth below the snow surface (m), $\iota$ is the time (s), and $S_{wi}=0.07$ is the irreducible water saturation. To derive the drainage over a 24 hour period, we take an approach similar to that in the Appendix of \cite{W20}. We have $\phi(z) =\phi_0 - cz$, where $\phi_0$ is the porosity at the snow surface, and $c$ is the porosity gradient. We fix $\phi_0 = 7.41\times 10^{-3}$, and $c = 12.6\times 10^{-6}$---these values were derived from intermittent snow measurements taken at several nearby locations. Ultimately, we estimate the mass of drainage $\varsigma$ passing through a depth $z$ over the time period from $\iota$ to $\iota+d\iota$ as,
+%\left. \frac{dz}{dt} \right|_{u}
+\begin{equation}
+\varsigma(z,\iota)  = \rho_S u(z) d\iota,
+\end{equation}
+where $\rho_S$ is the density of the snowpack. Snowpack density is reevaluated at each snowfall event. For each snowfall event, we take $\rho^*=50 + 3.4*(T_a + 15)$, where snowfall density $\rho_{Sf}=\rho^*$ if $\rho^*<50$ and $\rho_{Sf}=50$ otherwise, and $T_a$ is the air temperature that day \cite{W5}. 
+
+We take $u = \alpha k S_*^n$, where $S_* = (S_w-S_{wi})/(1-S_{wi})$ is the effective water saturation, and $S_w$ is the water saturation (water volume/pore volume). From (\ref{eq:meltdif}), we obtain the characteristic of the differential equation $\left. \frac{dz}{d\iota} \right|_{u}$, which we integrate to obtain $d\iota$ at some depth $z$.
+By this formulation, we obtain the potential drainage on day $t$,
+\begin{equation}
+\widetilde{m_d}(t) = \int_{z=0}^{z_D}\int_{\iota=0}^{24(3600)} \varsigma(z,\iota)d\iota dz,
+\end{equation}
+where $z_D$ is the total depth of the frozen-pack on day $t$. This yields the actual drainage,
+\begin{equation}
+m_{d}(t)=
+        \left\{ \begin{array}{ll}
+            \widetilde{m_d}(t)  &\widetilde{m_d}(t) <m_W^*(t) -\delta_W  \\
+            m_W^*(t) - \delta_W & \mbox{else},
+        \end{array} \right.
+\end{equation}
+ Overall, we obtain the surface water input $I$ on day $t$, 
+ \begin{equation}
+I(t)=
+        \left\{ \begin{array}{ll}
+            X_R(t) & m_S^*(t)+m_I^*(t)=0  \\
+            m_d(t) & \mbox{else},
+        \end{array} \right.
+\end{equation}
+and the new mass of trapped water,
+\begin{equation}
+m_W(t)=
+        \left\{ \begin{array}{ll}
+            0 & m_S^*(t)+m_I^*(t)=0  \\
+            m_W^*(t)-\delta_W + X_R(t) +\delta_S +\delta_I - m_d(t) & \mbox{else}.
+        \end{array} \right.
+\end{equation}
+
+\textit{Energy input fluxes.} For our site, we have daily eddy flux tower measurements for $R_n$, $H$ and $LE$. We use these energy measurements directly in our model. 
+
+We take $G$ to be dependent on surface temperature. For this specific bog, $G$ was found to be between 3 and 8\% of net radiation $R_n$. For all years, we have daily soil temperature 10 cm below the soil surface, $T_{soil,10}$. With the absolute minimum and maximum values (taken over the entire dataset, years 2009-2018), we set the ordered pairs $(\min T_{soil,10},3\%)$ and $(\max T_{soil,10},8\%)$, and found a simple linear model for estimating $G$ as a percent $p$ of $R_n$, where $p$ depends on soil temperature. This approach is based on work linking high ground surface fluxes to high ground surface temperatures \cite{Q13}, and an assumption that high soil temperatures 10 cm below the soil surface will correspond to high surface temperatures. 
+%
+When significant snowpack is present, we use a constant $G=173$ kJ/m$^2$, based on US Army Corps of Engineers, 1960 melt estimates. 
+
+Warm rainfall events can induce melting, so it's important we capture the heat input from rainfall events. For a rainfall (liquid water) event of mass $X_R$, we estimate the heat energy it imparts on the system as $P=X_RC_W T_w$, where $T_w$ is the wet-bulb temperature. 
+This approach parallels that taken in Eq X in \cite{W5}, with the notable modification of taking wet-bulb temperature, rather than air temperature, to be the temperature of the rainwater. We make this change as wet-bulb temperature is a more accurate predictor of actual rainfall temperature. 
+
+\textit{Differentiating snowfall and rainfall events.} Climatological conditions dictate whether a precipitation event will contain snowfall. For any given precipitation event, we define the proportion of snowfall $S_{Pr}$ by,
+\cite{W5}
+\begin{equation}
+        S_{Pr}=
+        \left\{ \begin{array}{ll}
+            1-0.5\exp (-2.2(1.1-T_w)^{1.3} &T_w < 1.1 \\
+            0.5\exp (-2.2(T_w-1.1)^{1.3} & T_w \geq 1.1,
+        \end{array} \right.
+    \end{equation}
+where $T_w$ is once again wet-bulb temperature ($^\circ$C). This method is derived in \cite{Q14}, and replicated in \cite{W5e} for a longterm, global dataset.  
+In many models, air temperature $T_a$ is used to determine if precipitation falls as rain or snow, but models often use wet-bulb temperature $T_w$ instead, since snowfall can be observed at temperatures above 0$^\circ$C \cite{Q15} in low humidity conditions. 
+
+While we don't have measured values for $T_w$, we have daily measurements of air temperature $T_a$ ($^\circ$C), and relative humidity $RH$ (\%), so we can estimate $T_w$ based on these later two climatological inputs. We use the empirically-derived formula from \cite{W5f}, that is,
+
+\begin{equation}
+T_w = T_a\tan^{-1}\left[a_1(RH+a_2)^{\sfrac{1}{2}} \right]
+   + \tan^{-1}(T_a+RH) 
+   - \tan^{-1}(RH - a_3)  
+  +a_4(RH)^{3/2}\tan^{-1}(a_5 RH)
+   - a_6  ,
+\label{eq:wetbulb}
+\end{equation}
+
+where $a_i$ for $i=1,...6$ are empirically-derived coefficients, given in Table \ref{table:wetbulb}. 
+
+\begin{center}
+\begin{table}[h]
+\begin{tabular}{c|c|c|c|c|c}
+$a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$\\
+\hline
+0.151977 
+& 8.313659 
+& 1.676331 
+& 0.00391838 
+& 0.023101 
+& 4.686035 
+\end{tabular}
+\caption[Table caption text]{Empirical coefficients for Equation (\ref{eq:wetbulb}) for wet-bulb temperature, based on air temperature and relative humidity. }
+\label{table:wetbulb}
+\end{table}
+\end{center}
+
+\newpage
+\section*{Appendix}
+\subsection*{Net radiation}
+Approach based on \cite{W5}.
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\textwidth]{seasonal_plots/est_albedo.pdf}
+\caption{}
+\label{fig:meth1}
+\end{figure}
+
+\begin{equation}
+R_{net} = R_{short}(\min T_{air},Albedo) + R_{long}(T_{surface},T_{air})
+\end{equation}
+%%
+
+%  Numbered lines in equations:
+%  To add line numbers to lines in equations,
+%  \begin{linenomath*}
+%  \begin{equation}
+%  \end{equation}
+%  \end{linenomath*}
+
+
+
+%% Enter Figures and Tables near as possible to where they are first mentioned:
+%
+% DO NOT USE \psfrag or \subfigure commands.
+%
+% Figure captions go below the figure.
+% Table titles go above tables;  other caption information
+%  should be placed in last line of the table, using
+% \multicolumn2l{$^a$ This is a table note.}
+%
+%----------------
+% EXAMPLE FIGURE
+%
+%
+% Giving latex a width will help it to scale the figure properly. A simple trick is to use \textwidth. Try this if large figures run off the side of the page.
+% \begin{figure}
+% \noindent\includegraphics[width=\textwidth]{anothersample.png}
+%\caption{caption}
+%\label{pngfiguresample}
+%\end{figure}
+%
+%
+%
+% If you get an error about an unknown bounding box, try specifying the width and height of the figure with the natwidth and natheight options.
+% \begin{figure}
+% \noindent\includegraphics[natwidth=800px,natheight=600px]{samplefigure.pdf}
+%\caption{caption}
+%\label{pdffiguresample}
+%\end{figure}
+%
+%
+% PDFLatex does not seem to be able to process EPS figures. You may want to try the epstopdf package.
+%
+%
+%
+% ---------------
+% EXAMPLE TABLE
+%
+% \begin{table}
+% \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+% \centering
+% \begin{tabular}{l c}
+% \hline
+%  Run  & Time (min)  \\
+% \hline
+%   $l1$  & 260   \\
+%   $l2$  & 300   \\
+%   $l3$  & 340   \\
+%   $h1$  & 270   \\
+%   $h2$  & 250   \\
+%   $h3$  & 380   \\
+%   $r1$  & 370   \\
+%   $r2$  & 390   \\
+% \hline
+% \multicolumn{2}{l}{$^{a}$Footnote text here.}
+% \end{tabular}
+% \end{table}
+
+%% SIDEWAYS FIGURE and TABLE
+% AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
+%
+% \begin{sidewaysfigure}
+% \includegraphics[width=20pc]{figsamp}
+% \caption{caption here}
+% \label{newfig}
+% \end{sidewaysfigure}
+%
+%  \begin{sidewaystable}
+%  \caption{Caption here}
+% \label{tab:signif_gap_clos}
+%  \begin{tabular}{ccc}
+% one&two&three\\
+% four&five&six
+%  \end{tabular}
+%  \end{sidewaystable}
+
+%% If using numbered lines, please surround equations with \begin{linenomath*}...\end{linenomath*}
+%\begin{linenomath*}
+%\begin{equation}
+%y|{f} \sim g(m, \sigma),
+%\end{equation}
+%\end{linenomath*}
+
+%%% End of body of article
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional Appendix goes here
+%
+% The \appendix command resets counters and redefines section heads
+%
+% After typing \appendix
+%
+%\section{Here Is Appendix Title}
+% will show
+% A: Here Is Appendix Title
+%
+%\appendix
+%\section{Here is a sample appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Optional Glossary, Notation or Acronym section goes here:
+%
+%%%%%%%%%%%%%%
+% Glossary is only allowed in Reviews of Geophysics
+%  \begin{glossary}
+%  \term{Term}
+%   Term Definition here
+%  \term{Term}
+%   Term Definition here
+%  \term{Term}
+%   Term Definition here
+%  \end{glossary}
+
+%
+%%%%%%%%%%%%%%
+% Acronyms
+%   \begin{acronyms}
+%   \acro{Acronym}
+%   Definition here
+%   \acro{EMOS}
+%   Ensemble model output statistics
+%   \acro{ECMWF}
+%   Centre for Medium-Range Weather Forecasts
+%   \end{acronyms}
+
+%
+%%%%%%%%%%%%%%
+% Notation
+%   \begin{notation}
+%   \notation{$a+b$} Notation Definition here
+%   \notation{$e=mc^2$}
+%   Equation in German-born physicist Albert Einstein's theory of special
+%  relativity that showed that the increased relativistic mass ($m$) of a
+%  body comes from the energy of motion of the body—that is, its kinetic
+%  energy ($E$)—divided by the speed of light squared ($c^2$).
+%   \end{notation}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  ACKNOWLEDGMENTS
+%
+% The acknowledgments must list:
+%
+% >>>>	A statement that indicates to the reader where the data
+% 	supporting the conclusions can be obtained (for example, in the
+% 	references, tables, supporting information, and other databases).
+%
+% 	All funding sources related to this work from all authors
+%
+% 	Any real or perceived financial conflicts of interests for any
+%	author
+%
+% 	Other affiliations for any author that may be perceived as
+% 	having a conflict of interest with respect to the results of this
+% 	paper.
+%
+%
+% It is also the appropriate place to thank colleagues and other contributors.
+% AGU does not normally allow dedications.
+
+
+\acknowledgments
+Enter acknowledgments, including your data availability statement, here.
+
+
+%% ------------------------------------------------------------------------ %%
+%% References and Citations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \bibliography{<name of your .bib file>} don't specify the file extension
+%
+% don't specify bibliographystyle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{BWQ_bib}
+
+
+
+%Reference citation instructions and examples:
+%
+% Please use ONLY \cite and \citeA for reference citations.
+% \cite for parenthetical references
+% ...as shown in recent studies (Simpson et al., 2019)
+% \citeA for in-text citations
+% ...Simpson et al. (2019) have shown...
+%
+%
+%...as shown by \citeA{jskilby}.
+%...as shown by \citeA{lewin76}, \citeA{carson86}, \citeA{bartoldy02}, and \citeA{rinaldi03}.
+%...has been shown \cite{jskilbye}.
+%...has been shown \cite{lewin76,carson86,bartoldy02,rinaldi03}.
+%...has been shown \cite [e.g.,][]{lewin76,carson86,bartoldy02,rinaldi03}.
+%
+% DO NOT use other cite commands (e.g., \citet, \citep, \citeyear, \nocite, \citealp, etc.).
+%
+
+\begin{comment}
+\end{comment}
+\end{document}
+
+
+
+More Information and Advice:
+
+%% ------------------------------------------------------------------------ %%
+%
+%  SECTION HEADS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Capitalize the first letter of each word (except for
+% prepositions, conjunctions, and articles that are
+% three or fewer letters).
+
+% AGU follows standard outline style; therefore, there cannot be a section 1 without
+% a section 2, or a section 2.3.1 without a section 2.3.2.
+% Please make sure your section numbers are balanced.
+% ---------------
+% Level 1 head
+%
+% Use the \section{} command to identify level 1 heads;
+% type the appropriate head wording between the curly
+% brackets, as shown below.
+%
+%An example:
+%\section{Level 1 Head: Introduction}
+%
+% ---------------
+% Level 2 head
+%
+% Use the \subsection{} command to identify level 2 heads.
+%An example:
+%\subsection{Level 2 Head}
+%
+% ---------------
+% Level 3 head
+%
+% Use the \subsubsection{} command to identify level 3 heads
+%An example:
+%\subsubsection{Level 3 Head}
+%
+%---------------
+% Level 4 head
+%
+% Use the \subsubsubsection{} command to identify level 3 heads
+% An example:
+%\subsubsubsection{Level 4 Head} An example.
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  IN-TEXT LISTS
+%
+%% ------------------------------------------------------------------------ %%
+%
+% Do not use bulleted lists; enumerated lists are okay.
+% \begin{enumerate}
+% \item
+% \item
+% \item
+% \end{enumerate}
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATIONS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Single-line equations are centered.
+% Equation arrays will appear left-aligned.
+
+Math coded inside display math mode \[ ...\]
+ will not be numbered, e.g.,:
+ \[ x^2=y^2 + z^2\]
+
+ Math coded inside \begin{equation} and \end{equation} will
+ be automatically numbered, e.g.,:
+ \begin{equation}
+ x^2=y^2 + z^2
+ \end{equation}
+
+
+% To create multiline equations, use the
+% \begin{eqnarray} and \end{eqnarray} environment
+% as demonstrated below.
+\begin{eqnarray}
+  x_{1} & = & (x - x_{0}) \cos \Theta \nonumber \\
+        && + (y - y_{0}) \sin \Theta  \nonumber \\
+  y_{1} & = & -(x - x_{0}) \sin \Theta \nonumber \\
+        && + (y - y_{0}) \cos \Theta.
+\end{eqnarray}
+
+%If you don't want an equation number, use the star form:
+%\begin{eqnarray*}...\end{eqnarray*}
+
+% Break each line at a sign of operation
+% (+, -, etc.) if possible, with the sign of operation
+% on the new line.
+
+% Indent second and subsequent lines to align with
+% the first character following the equal sign on the
+% first line.
+
+% Use an \hspace{} command to insert horizontal space
+% into your equation if necessary. Place an appropriate
+% unit of measure between the curly braces, e.g.
+% \hspace{1in}; you may have to experiment to achieve
+% the correct amount of space.
+
+
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATION NUMBERING: COUNTER
+%
+%% ------------------------------------------------------------------------ %%
+
+% You may change equation numbering by resetting
+% the equation counter or by explicitly numbering
+% an equation.
+
+% To explicitly number an equation, type \eqnum{}
+% (with the desired number between the brackets)
+% after the \begin{equation} or \begin{eqnarray}
+% command.  The \eqnum{} command will affect only
+% the equation it appears with; LaTeX will number
+% any equations appearing later in the manuscript
+% according to the equation counter.
+%
+
+% If you have a multiline equation that needs only
+% one equation number, use a \nonumber command in
+% front of the double backslashes (\\) as shown in
+% the multiline equation above.
+
+% If you are using line numbers, remember to surround
+% equations with \begin{linenomath*}...\end{linenomath*}
+
+%  To add line numbers to lines in equations:
+%  \begin{linenomath*}
+%  \begin{equation}
+%  \end{equation}
+%  \end{linenomath*}
+
+
+
